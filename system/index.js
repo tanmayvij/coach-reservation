@@ -9,4 +9,7 @@ router.route("/trains")
 router.route("/train/:id")
 .get(require("./modules/getTrain"));
 
+router.route("/book")
+.post(require("./modules/bookTrain"));
+
 module.exports = router;
