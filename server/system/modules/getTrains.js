@@ -1,14 +1,20 @@
-module.exports = (req, res) => {
-    res.json({
-        success: true,
-        data: [
-        {
-            id: 1000,
-            origin: "Delhi",
-            destination: "Mumbai",
-            departure: "06:00",
-            arrival: "18:00",
-            available: 70
-        }
-    ]});
+const mongoose = require('mongoose');
+const Train = mongoose.model('Train');
+
+module.exports = async (req, res) => {
+    
+    try {
+        let trains = await Train.find({});
+    
+        res.status(200).json({
+            success: true,
+            data: trains
+        });
+    }
+    catch(e) {
+        res.status(500).json({
+            success: false,
+            data: 'server_error'
+        })
+    }
 };
