@@ -5,5 +5,5 @@
 </div>
 <h6 class="display-5">Current status:</h6>
 <div class="display-6 row">
-    <p *ngFor="let seat of results.status" class="border col-md-1 text-success text-center">{{ seat }}</p>
+    <p *ngFor="let seat of results.status" class="border col-md-1 text-{{ seat.type === 'available' ? 'success' : 'danger'}} text-center">{{ seat.val }}</p>
 </div>
