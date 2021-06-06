@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <div *ngIf="(!error || !error.length) && train">
+    <div *ngIf="(!error || !error.length) && train && !results">
         <table class="table table-dark">
             <tbody>
                 <tr>
@@ -78,7 +78,7 @@
                 <span class="visually-hidden">Loading...</span>
             </div>
         </div>
-
-        <app-booking-result *ngIf="results"></app-booking-result>
     </div>
+
+    <app-booking-result *ngIf="results" [results]="results"></app-booking-result>
 </div>

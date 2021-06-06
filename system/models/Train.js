@@ -23,8 +23,12 @@ const schema = new mongoose.Schema({
         required: true
     },
     available: {
-        type: Number,
-        default: 80
+        type: [Number],
+        default: [...Array(80).keys()].map(n => ++n)
+    },
+    booked: {
+        type: [Number],
+        default: []
     }
 });
 
