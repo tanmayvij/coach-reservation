@@ -19,7 +19,7 @@
                 <td>{{ train.arrival }}</td>
                 <td>{{ train.available.length }} / 80</td>
                 <td>
-                    <button class="btn btn-primary" (click)="book(train.id)">
+                    <button class="btn btn-primary" (click)="book(train.id)" [disabled]="!train.available.length">
                         Book now
                     </button>
                 </td>
