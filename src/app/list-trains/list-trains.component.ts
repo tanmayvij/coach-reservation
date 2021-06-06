@@ -11,6 +11,7 @@ export class ListTrainsComponent implements OnInit {
 
   trains: any;
   loading = true;
+  error = false;
 
   constructor(private trainService: TrainService, private router: Router) { }
 
@@ -23,6 +24,10 @@ export class ListTrainsComponent implements OnInit {
       else {
         this.trains = [];
       }
+    }, (error: any) => {
+      this.loading = false;
+      this.error = true;
+      this.trains = [];
     });
   }
 

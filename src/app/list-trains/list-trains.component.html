@@ -26,8 +26,11 @@
             </tr>
         </tbody>
     </table>
-    <div class="alert alert-danger" *ngIf="trains && !trains.length">
+    <div class="alert alert-danger" *ngIf="trains && !trains.length && !error">
         Sorry, no trains found!
+    </div>
+    <div class="alert alert-danger" *ngIf="error">
+        Something went wrong.
     </div>
     <div class="d-flex justify-content-center mt-5" *ngIf="loading">
         <div class="spinner-grow text-primary" role="status">
