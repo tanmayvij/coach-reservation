@@ -16,7 +16,7 @@ app.use(parser.urlencoded({ extended: true}));
 app.use(parser.json({}));
 
 app.use('/api', authenticate, system);
-app.use('/', express.static('public'));
+app.use('/', express.static('dist/coach-reservation'));
 
 const server = app.listen(app.get('port'), function() {
 	console.log(server.address());
