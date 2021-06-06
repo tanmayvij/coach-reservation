@@ -1,0 +1,46 @@
+<div class="container">
+    <h1 class="display-2 text-center mb-5">Available Trains</h1>
+    <table class="table table-striped table-hover" *ngIf="trains?.length">
+        <tbody>
+            <tr>
+                <th>Train #</th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Departs At</th>
+                <th>Arrives At</th>
+                <th>Available Seats</th>
+                <th>Actions</th>
+            </tr>
+            <tr *ngFor="let train of trains">
+                <td>{{ train.id }}</td>
+                <td>{{ train.origin }}</td>
+                <td>{{ train.destination }}</td>
+                <td>{{ train.departure }}</td>
+                <td>{{ train.arrival }}</td>
+                <td>{{ train.available }} / 80</td>
+                <td>
+                    <button class="btn btn-primary" (click)="book(train.id)">
+                        Book now
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="alert alert-danger" *ngIf="trains && !trains.length">
+        Sorry, no trains found!
+    </div>
+    <div class="d-flex justify-content-center mt-5" *ngIf="loading">
+        <div class="spinner-grow text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-warning" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</div>
