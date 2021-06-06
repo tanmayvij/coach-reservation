@@ -44,7 +44,7 @@
                 </tr>
                 <tr>
                     <th class="noselect">Available Seats</th>
-                    <td class="noselect">{{ train.available }} / 80</td>
+                    <td class="noselect">{{ train.available.length }} / 80</td>
                 </tr>
             </tbody>
         </table>
@@ -77,6 +77,11 @@
             <div class="spinner-grow text-success" role="status">
                 <span class="visually-hidden">Loading...</span>
             </div>
+        </div>
+
+        <h6 class="display-5">Current status:</h6>
+        <div class="display-6 row seven-cols">
+            <p *ngFor="let seat of seats" class="border col-md-1 text-{{ seat.type === 'available' ? 'success' : 'danger'}} text-center">{{ seat.val }}</p>
         </div>
     </div>
 

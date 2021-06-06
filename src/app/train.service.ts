@@ -31,4 +31,27 @@ export class TrainService {
       headers: this.httpHeaders
     });
   }
+
+  getStatus(available: any, booked: any): void {
+    const temp = [...available, ...booked];
+    let seats: any = [];
+    temp.forEach(elem => {
+        seats.push({
+            type: available.includes(elem) ? 'available' : 'booked',
+            val: elem
+        });
+    });
+    seats.sort(this.sortObj);
+    return seats;
+  }
+
+  sortObj(a: any, b: any): number {
+    if (a.val < b.val) {
+        return -1;
+    } else if (a.val > b.val) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
 }

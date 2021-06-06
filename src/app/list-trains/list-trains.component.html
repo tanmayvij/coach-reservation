@@ -17,7 +17,7 @@
                 <td>{{ train.destination }}</td>
                 <td>{{ train.departure }}</td>
                 <td>{{ train.arrival }}</td>
-                <td>{{ train.available }} / 80</td>
+                <td>{{ train.available.length }} / 80</td>
                 <td>
                     <button class="btn btn-primary" (click)="book(train.id)">
                         Book now

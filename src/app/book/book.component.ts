@@ -14,6 +14,7 @@ export class BookComponent implements OnInit {
   bookLoading = false;
   id: any;
   train: any;
+  seats: any = [];
   selected = 1;
   results: any;
 
@@ -33,6 +34,7 @@ export class BookComponent implements OnInit {
         this.loading = false;
         if (res.success) {
           this.train = res.data;
+          this.seats = this.trainService.getStatus(this.train.available, this.train.booked);
         }
         else {
           this.error = 'The specified train does not exist.';
