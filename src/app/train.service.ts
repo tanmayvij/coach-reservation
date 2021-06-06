@@ -35,12 +35,16 @@ export class TrainService {
   getStatus(available: any, booked: any): void {
     const temp = [...available, ...booked];
     let seats: any = [];
+
+    // Create an object with list of all seats and corresponding status
     temp.forEach(elem => {
         seats.push({
             type: available.includes(elem) ? 'available' : 'booked',
             val: elem
         });
     });
+    
+    // Sort the object in ascending order based on seat number value
     seats.sort(this.sortObj);
     return seats;
   }

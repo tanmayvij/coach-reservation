@@ -34,7 +34,7 @@ export class BookComponent implements OnInit {
         this.loading = false;
         if (res.success) {
           this.train = res.data;
-          this.seats = this.trainService.getStatus(this.train.available, this.train.booked);
+          this.seats = this.trainService.getStatus(this.train.available, this.train.booked); // Calculate current status of seats
         }
         else {
           this.error = 'The specified train does not exist.';

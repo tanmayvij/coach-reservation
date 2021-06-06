@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TrainService } from '../train.service';
 
 @Component({
   selector: 'app-booking-result',
@@ -7,10 +8,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class BookingResultComponent implements OnInit {
   @Input() results: any;
+  status: any;
 
-  constructor() { }
+  constructor(private trainService: TrainService) { }
 
   ngOnInit(): void {
+    this.status = this.trainService.getStatus(this.results.train.available, this.results.train.booked);
   }
 
 }
