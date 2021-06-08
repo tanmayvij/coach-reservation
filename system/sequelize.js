@@ -2,9 +2,9 @@ const Sequelize = require('sequelize');
 
 const config = {
         username: 'root',
-        password: '',
+        password: 'JGEBOll2wfw05NAL',
         database: 'coachreservation',
-        host: 'localhost',
+        host: '35.232.187.47',
         dialect: "mysql",
         migrationStorage: "json",
         define: {
