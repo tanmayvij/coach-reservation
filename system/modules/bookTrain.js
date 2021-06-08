@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Train = mongoose.model('Train');
+const Train = require('../sequelize').Train;
 
 module.exports = async (req, res) => {
     try {
@@ -23,6 +23,9 @@ module.exports = async (req, res) => {
                 data: 'Train does not exist.'
             });
         }
+
+        train.available = JSON.parse(train.available);
+        train.booked = JSON.parse(train.booked);
 
         // Return an error if seats cannot be alloted
         if(numSeats > train.available.length) {
@@ -86,7 +89,6 @@ module.exports = async (req, res) => {
         train.available = train.available.filter(s => !alloted.includes(s));
         train.booked = [...train.booked, ...alloted];
         train.booked.sort();
-        train.save();
 
         res.status(200).json({
             success: true,
@@ -94,7 +96,11 @@ module.exports = async (req, res) => {
                 alloted,
                 train
             }
-        })
+        });
+
+        train.booked = JSON.stringify(train.booked);
+        train.available = JSON.stringify(train.available);
+        train.save();
     }
     catch(e) {
         console.log(e);

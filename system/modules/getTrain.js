@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Train = mongoose.model('Train');
+const Train = require('../sequelize').Train;
 
 module.exports = async (req, res) => {
     
@@ -24,6 +24,9 @@ module.exports = async (req, res) => {
                 data: null
             });
         }
+
+        train.available = JSON.parse(train.available);
+        train.booked = JSON.parse(train.booked);
     
         return res.status(200).json({
             success: true,
