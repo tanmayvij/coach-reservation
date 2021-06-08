@@ -1,10 +1,22 @@
 const Sequelize = require('sequelize');
 
-const config = {
+const config = process.env.NODE_ENV.toLowerCase() === 'production' ? {
         username: 'root',
         password: 'JGEBOll2wfw05NAL',
         database: 'coachreservation',
         host: '35.232.187.47',
+        dialect: "mysql",
+        migrationStorage: "json",
+        define: {
+            charset: 'utf8',
+            collate: 'utf8_general_ci',
+            timestamps: true
+        }
+    } : {
+        username: 'root',
+        password: '',
+        database: 'coachreservation',
+        host: 'localhost',
         dialect: "mysql",
         migrationStorage: "json",
         define: {
