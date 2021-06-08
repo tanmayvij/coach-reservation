@@ -1,4 +1,5 @@
 <div class="alert alert-success mt-5">Booking successful</div>
+<button class="btn btn-primary" (click)="back()">Go Back</button>
 <h6 class="display-5">Seats alloted:</h6>
 <div class="display-6 row">
     <p *ngFor="let seat of results.alloted" class="border col-md-1 text-success text-center">{{ seat }}</p>
